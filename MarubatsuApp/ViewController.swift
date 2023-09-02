@@ -32,19 +32,45 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showQuestion()
         // Do any additional setup after loading the view.
     }
-    
+    //配列の0番目を出します 除書の中からクエスチョンを出す
     func showQuestion() {
-          let question = questions[currentQuestionNum]
-
-          if let que = question["question"] as? String {
-              questionLabel.text = que
-          }
-      }
+        let question = questions[currentQuestionNum]
+        
+        if let que = question["question"] as? String {
+            questionLabel.text = que
+            
+            
+        }
+        // 回答をチェックする関数
+        // 回答チェックの関数、正解なら次の問題を表示
+        func checkAnswer(yourAnswer: Bool) {
+            let question = questions[currentQuestionNum]
+            
+            if let ans = question["answer"] as? Bool {
+                
+                if yourAnswer == ans {
+                    // 正解
+                    // currentQuestionNumを1足して次の問題に進む
+                    currentQuestionNum += 1
+                } else {
+                    // 不正解
+                    
+                }
+            } else {
+                print("答えが入ってません")
+                return
+            }
+            
+            // 問題を表示します。
+            // 正解であれば次の問題が、不正解であれば同じ問題が再表示されます。
+            showQuestion()
+            
+        }
+        
     }
-    
-    
     
     
     
@@ -53,9 +79,9 @@ class ViewController: UIViewController {
     
     @IBAction func tappendYesBitton(_ sender: UIButton) {
     }
-
-
-
-
+    
+    
+    
+    
 }
 
