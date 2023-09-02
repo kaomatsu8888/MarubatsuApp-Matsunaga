@@ -55,8 +55,11 @@ class ViewController: UIViewController {
                 // 正解のときの処理
                 // currentQuestionNumを1足して次の問題に進む 配列の1番目が呼び出される
                 currentQuestionNum += 1
+                showAlert(message: "正解！")
+                
             } else {
                 // 不正解のときの処理
+                showAlert(message: "不正解…")
                 
             }
         } else {
@@ -73,7 +76,12 @@ class ViewController: UIViewController {
         showQuestion()
         
     }
-
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
+    }
     
     @IBAction func tappendButton(_ sender: UIButton) {
         checkAnswer(yourAnswer: false)
