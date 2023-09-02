@@ -7,7 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController() {
+    @IBOutlet weak var questionLabel: UILabel!
+    
+
+    
+}
 
     override func viewDidLoad() {
         super.viewDidLoad()
